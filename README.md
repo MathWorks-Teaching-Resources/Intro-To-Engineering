@@ -1,4 +1,3 @@
-
 # <span style="color:rgb(213,80,0)">Introduction to Engineering: </span>
 # <span style="color:rgb(213,80,0)">A Hands-On Exploration with Arduino</span>
 <a name="H_053613DF"></a>
