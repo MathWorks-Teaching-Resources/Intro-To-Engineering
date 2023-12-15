@@ -2,7 +2,7 @@
 # <span style="color:rgb(213,80,0)">A Hands-On Exploration with Arduino</span>
 <a name="H_053613DF"></a>
 
-[![View on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/156472-introduction-to-engineering-with-arduino)
+[![View on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/156477-introduction-to-engineering-with-arduino)
 
 **Curriculum Module**
 
@@ -48,7 +48,7 @@ MATLAB®, Simulink®, Stateflow™, Symbolic Math Toolbox™, MATLAB Support pac
 <a name="H_E8C62B23"></a>
 # Scripts
 
- *If you are viewing this in a version of MATLAB prior to R2023b, you can view the learning outcomes for each script* [*here.*](https://www.mathworks.com/matlabcentral/fileexchange/156472-introduction-to-engineering-with-arduino)
+ *If you are viewing this in a version of MATLAB prior to R2023b, you can view the learning outcomes for each script* [*here.*](https://www.mathworks.com/matlabcentral/fileexchange/156477-introduction-to-engineering-with-arduino)
 
 <a name="H_035F075E"></a>
 ## [**SupportArduino.mlx**](https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=SupportArduino.mlx)
