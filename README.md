@@ -35,8 +35,13 @@ These scripts assume no prior knowledge of hardware programming and wiring. Ther
 <a name="H_330E72C3"></a>
 ## Getting Started
 
-Download or clone this repository. Open MATLAB, navigate to the folder containing these scripts, and double-click on [intro-to-engineering.prj](matlab: openProject("intro-to-engineering.prj")). It will add the appropriate files to your MATLAB path and open an app that asks you where you would like to start. 
+Download this repository. Open MATLAB, navigate to the folder containing these scripts, and double-click on [intro-to-engineering.prj](matlab: openProject("intro-to-engineering.prj")). It will add the appropriate files to your MATLAB path and open an app that asks you where you would like to start. 
 
+To clone this repository, you can copy and paste the following command directly into your MATLAB Command Window:
+
+<pre>
+gitclone("https://github.com/MathWorks-Teaching-Resources/Intro-To-Engineering.git")
+</pre>
 
 Ensure you have all the required products ([listed below](#H_E850B4FF)) installed. If you need to include a product, add it using the Add-On Explorer. To install an add-on, go to the **Home** tab and select  <img src="Images/image_1.png" width="16" alt="image_1.png"> **Add-Ons** > **Get Add-Ons**. 
 
