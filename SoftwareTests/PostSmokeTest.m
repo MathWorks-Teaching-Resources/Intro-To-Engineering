@@ -45,16 +45,16 @@ writelines(File,fullfile("public","index.html"),"WriteMode","overwrite");
 % Format the JSON file
 Badge = struct;
 Badge.schemaVersion = 1;
-Badge.label = "Tested with";
+Badge.label = "Test Status";
 if all(passed)
     Badge.color = "success";
     Badge.message = join("R"+Version," | ");
 elseif any(Passed)
     Badge.color = "yellowgreen";
     Badge.message = join("R")
-else
+elseif all(~Passed)
     Badge.color = "critical";
-    Badge.message = "Pipeline fails";
+    Badge.message = join("R"+Version," | ");
 end
 Badge = jsonencode(Badge);
 writelines(Badge,fullfile("Images","TestedWith.json"));

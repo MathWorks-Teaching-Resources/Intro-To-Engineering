@@ -25,13 +25,13 @@ jobs:
       # Checks-out your repository
       - uses: actions/checkout@v4
       
-      # Sets up a display server
-      - name: Start display server
-        if: ${{ always() }}
-        run: |
-          sudo apt-get install xvfb
-          Xvfb :99 &
-          echo "DISPLAY=:99" >> $GITHUB_ENV
+      # # Sets up a display server
+      # - name: Start display server
+      #   if: ${{ always() }}
+      #   run: |
+      #     sudo apt-get install xvfb
+      #     Xvfb :99 &
+      #     echo "DISPLAY=:99" >> $GITHUB_ENV
  
       # Sets up MATLAB
       - name: Setup MATLAB
