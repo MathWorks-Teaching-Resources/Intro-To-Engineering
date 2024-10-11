@@ -46,7 +46,7 @@ writelines(File,fullfile("public","index.html"),"WriteMode","overwrite");
 Badge = struct;
 Badge.schemaVersion = 1;
 Badge.label = "Test Status";
-if all(passed)
+if all(Passed)
     Badge.color = "success";
     Badge.message = join("R"+Version," | ");
 elseif any(Passed)
