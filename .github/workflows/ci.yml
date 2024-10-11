@@ -44,12 +44,12 @@ jobs:
       # Run all the tests
       - name: Run SmokeTests
         uses: matlab-actions/run-command@v2
-        continue-on-error: true
         with:
           command: openProject(pwd); RunAllTests; 
 
       # Upload the test results as artifact
       - name: Upload TestResults
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: TestResults_${{ matrix.MATLABVersion }}
