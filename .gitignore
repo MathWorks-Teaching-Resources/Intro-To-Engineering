@@ -27,7 +27,6 @@
 # Generated helpsearch folders
 helpsearch*/
 
-<<<<<<< HEAD
 # Defined Simulink cache folder
 Utilities/SimulinkCache/*
 
@@ -35,9 +34,6 @@ Utilities/SimulinkCache/*
 slprj/
 sccprj/
 codegen/
-=======
-# Simulink cache folder
-Utilities/SimulinkCache/*
 
 # Code generation file
 *.eep
@@ -51,11 +47,5 @@ Utilities/SimulinkCache/*
 # Project settings
 Utilities/ProjectSettings.mat
 
-# Report folder
+# GitLab page folder
 public/
-SoftwareTests/TestResults_*
-
-# File created during script execution
-Scripts/ReactionAnalyzer.docx
-Images/ReactionTimeFig.fig
-Images/ReactionTimeImg.svg
