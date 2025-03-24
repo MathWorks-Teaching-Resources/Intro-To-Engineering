@@ -56,37 +56,37 @@ Ensure you have all the required products (listed below) installed. If you need 
 MATLAB®, Simulink®, Stateflow™, Symbolic Math Toolbox™, MATLAB Support package for Arduino, Simulink Support package for Arduino.
 
 # Scripts
-## [**SupportArduino.mlx**](./https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/SupportArduino.mlx)
+## [**SupportArduino.mlx**](https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/SupportArduino.mlx)
 |      |      |
 | :-- | :-- |
 | <img src="Images/image_2.png" width="171" alt="image_2.png"> <br>  | **In this script, students will...** <br> $\bullet$ Check their Arduino board compatibility. <br> $\bullet$ Install MATLAB and Simulink support packages for Arduino Hardware. <br> $\bullet$ Setup ThingSpeak channel for IoT. <br>   |
 |      |       |
 
-## [BlinkToSOS.mlx](./https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/BlinkToSOS.mlx)
+## [BlinkToSOS.mlx](https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/BlinkToSOS.mlx)
 |      |      |
 | :-- | :-- |
 | <img src="Images/image_3.png" width="171" alt="image_3.png"> <br>  | **In this script, students will...** <br> $\bullet$ Learn the fundamental type of signals supported on and Arduino board. <br> $\bullet$ Wire a simple LED to their Arduino board. <br> $\bullet$ Control the LED from a simple blink to encoding Morse code. <br>   |
 |      |       |
 
-## [**ReactionAnalyzer.mlx**](./https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/ReactionAnalyzer.mlx)
+## [**ReactionAnalyzer.mlx**](https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/ReactionAnalyzer.mlx)
 |      |      |
 | :-- | :-- |
 | <img src="Images/image_4.png" width="171" alt="image_4.png"> <br>  | **In this script, students will...** <br> $\bullet$ Learn how to control Arduino with a Stateflow diagram. <br> $\bullet$ Learn data analysis techniques. <br> $\bullet$ Write and export experiment report from MATLAB. <br>   |
 |      |       |
 
-## [**GreenhouseControl.mlx**](./https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/GreenhouseControl.mlx)
+## [**GreenhouseControl.mlx**](https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/GreenhouseControl.mlx)
 |      |      |
 | :-- | :-- |
 | <img src="Images/image_5.png" width="171" alt="image_5.png"> <br>  | **In this script, students will...** <br> $\bullet$ Use a temperature sensor. <br> $\bullet$ Develop a control algorithm. <br> $\bullet$ Test their control algorithm. <br>   |
 |      |       |
 
-## [**GreenhouseModel.mlx**](./https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/GreenhouseModel.mlx)
+## [**GreenhouseModel.mlx**](https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/GreenhouseModel.mlx)
 |      |      |
 | :-- | :-- |
 | <img src="Images/image_6.png" width="171" alt="image_6.png"> <br>  | **In this script, students will...** <br> $\bullet$ Use a Simscape thermal model. <br> $\bullet$ Simulate the greenhouse over a full year of data. <br> $\bullet$ Test multiple fans to validate the design. <br>   |
 |      |       |
 
-## [**ConnectedGreenhouse.mlx**](./https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/ConnectedGreenhouse.mlx)
+## [**ConnectedGreenhouse.mlx**](https://matlab.mathworks.com/open/github/v1?repo=MathWorks-Teaching-Resources/Intro-To-Engineering&project=intro-to-engineering.prj&file=Scripts/ConnectedGreenhouse.mlx)
 |      |      |
 | :-- | :-- |
 | <img src="Images/image_7.png" width="171" alt="image_7.png"> <br>  | **In this script, students will...** <br> $\bullet$ Learn how to read and write from a ThingSpeak channel. <br> $\bullet$ Log the temperature in the greenhouse on their own channel. <br> $\bullet$ Create an alert when the temperature exceeds the acceptable range. <br>   |
