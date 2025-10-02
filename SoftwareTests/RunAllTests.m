@@ -5,24 +5,6 @@ end
 
 import matlab.unittest.plugins.TestReportPlugin;
 
-% Install DHT library
-installedAddOn = false;
-addons = matlab.addons.installedAddons;
-addonsID = find(addons.Name == "Arduino Additional Sensors Library (DHT, LPS331)");
-if addonsID == []
-    installedAddOn = true;
-    gitclone("https://github.com/roslovets/Arduino_Additional_Sensors_Simulink_Library_DHT_LPS331.git")
-    addpath("Arduino_Additional_Sensors_Simulink_Library_DHT_LPS331");
-    addpath(fullfile("Arduino_Additional_Sensors_Simulink_Library_DHT_LPS331","drivers","DHT"));
-    addpath(fullfile("Arduino_Additional_Sensors_Simulink_Library_DHT_LPS331","drivers","LPS331"));
-    disp("DHT drivers installed.")
-else
-    if ~addons.Enabled(addonsID)
-        matlab.addons.enableAddon("Arduino Additional Sensors Library (DHT, LPS331)");
-        disp("DHT drivers enabled")
-    end
-end
-
 % Create a runner
 Runner = matlab.unittest.TestRunner.withTextOutput;
 Folder = fullfile(currentProject().RootFolder,"public",version("-release"));
@@ -46,15 +28,6 @@ Suite = [Suite testsuite("SolnSmokeTests")];
 
 % Run the test suite
 Results = Runner.run(Suite);
-
-
-if installedAddOn
-    rmpath("Arduino_Additional_Sensors_Simulink_Library_DHT_LPS331");
-    rmpath(fullfile("Arduino_Additional_Sensors_Simulink_Library_DHT_LPS331","drivers","DHT"));
-    rmpath(fullfile("Arduino_Additional_Sensors_Simulink_Library_DHT_LPS331","drivers","LPS331"));
-    rmdir("Arduino_Additional_Sensors_Simulink_Library_DHT_LPS331",'s')
-    disp("DHT drivers uninstalled.")
-end
 
 if ShowReport
     web(fullfile(Folder,"index.html"))
