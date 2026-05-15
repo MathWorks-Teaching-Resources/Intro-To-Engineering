@@ -51,3 +51,6 @@ Utilities/ProjectSettings.mat
 public/
 .buildtool/
 ci_utilities/
+
+# Generated files
+Scripts/ReactionAnalyzer.docx
