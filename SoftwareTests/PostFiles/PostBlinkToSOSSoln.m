@@ -1,3 +1,5 @@
-%  Post-run script for BlinkToSOSSoln.mlx
+%  Post-run script for BlinkToSOSSoln.m
 % ---- Post-run commands -----
  
+
+% <matlab:ShareFeedback Share your feedback>

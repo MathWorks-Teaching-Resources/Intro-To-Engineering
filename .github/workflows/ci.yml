@@ -76,15 +76,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        Releases: [R2025b, R2026a]
+        Releases: [R2026a, R2026b]
     runs-on: ubuntu-latest
     env:
       MATLAB_PRODUCTS: >
-        Simulink 
-        Simscape 
-        Stateflow 
-        Symbolic_Math_Toolbox 
-        MATLAB_Support_Package_for_Arduino_Hardware 
+        Simulink
+        Simscape
+        Stateflow
+        Symbolic_Math_Toolbox
+        MATLAB_Support_Package_for_Arduino_Hardware
         Simulink_Support_Package_for_Arduino_Hardware
       LD_PRELOAD: /usr/lib/x86_64-linux-gnu/libstdc++.so.6
     steps:

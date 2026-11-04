@@ -54,3 +54,5 @@ ci_utilities/
 
 # Generated files
 Scripts/ReactionAnalyzer.docx
+# AI Tooling
+.playwright-mcp/
