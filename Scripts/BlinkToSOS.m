@@ -82,8 +82,8 @@ IdentifyPWMPin(myPWMPins);
 %[text] As presented in the previous section, your Arduino supports three types of signal: analog, digital, and PWM. The analog signal can only be used as an input signal, such as reading data from a sensor. The PWM signal can only be used as an output to control multiple kinds of hardware. The digital signal can be used as both input and output.
 %[text] %[text:anchor:H_E402E224] ### Analog Signals
 %[text] An analog signal is any continuous signal with an unlimited range of values. They are straight and not discrete. The amplitude of an analog signal may vary with time, making it a natural representation of real-world phenomena. An example of an analog signal would be the temperature measured by a weather station concerning time.
-%[text] ![Try this icon](text:image:53fd) **Try.** Visualize the temperature at the Mathworks' weather station in Natick, MA, over the last 24 hours.
-%[text]  Visualize yesterday's temperature from a weather station at Mathworks campus in Natick, MA.
+%[text] ![Try this icon](text:image:53fd) **Try.** Visualize the temperature at the MathWorks weather station in Natick, MA, over the latest available 24 hours.
+%[text] The plots use the 24-hour window ending at the weather channel's latest recorded sample. If the station is offline, the data may be older than yesterday. Check the dates on the time axis.
   %[control:button:33bd]{"position":[1,2]}
 visualizeNatickWeather()
 %%
@@ -106,7 +106,7 @@ encodeAnalogSignal(...
 %%
 %[text] %[text:anchor:H_E285DC19] ### **Digital signals**
 %[text] A digital signal is a logical signal that can only take two values: 0 and 1, or LOW and HIGH.
-%[text] ![Try this icon](text:image:0b92) **Try.** Visualize the air relative humidity in Natick, MA, over the last 24 hours.
+%[text] ![Try this icon](text:image:0b92) **Try.** Visualize the air relative humidity in Natick, MA, over the latest available 24 hours.
   %[control:button:2c79]{"position":[1,2]}
 plotHumidity
 %%
@@ -114,7 +114,7 @@ plotHumidity
 IdentifyHumidityType("None"); %[control:dropdown:9ca4]{"position":[22,28]}
 %[text] One way to transform an analog signal into a digital signal is to apply logical operation. For example, we could create a digital that would be HIGH (or 1) when humidity surpasses a certain value and LOW (or 0) below that value. 
 %%
-%[text] ![Try this icon](text:image:7ebf) **Try.** Visualize yesterday's temperature from a weather station at Mathworks campus in Natick, MA.
+%[text] ![Try this icon](text:image:7ebf) **Try.** Visualize the relative humidity from the MathWorks weather station in Natick, MA, over the latest available 24 hours, and apply a threshold to create a digital signal.
   %[control:button:72bd]{"position":[1,2]}
 filteringHumidity(">"," 50") %[control:dropdown:33ef]{"position":[19,22]} %[control:editfield:2b87]{"position":[23,28]}
 %[text] From reading an analog signal representing the relative air humidity, we can now define a digital signal that could control a dehumidifier to keep a comfort level inside a home.
@@ -746,15 +746,36 @@ end
 %[text] 
 %[text] ![Function Icon](text:image:7eba)**`getWeatherData`**
 function weatherData = getWeatherData()
-    % Adding (-years(1)) to work through weather station outage
-    [data,time,~] = thingSpeakRead(12397,'DateRange',[datetime('now')-days(1),datetime('now')]-years(1)); 
-    weatherData = timetable(time,data);
-    weatherData = splitvars(weatherData,'data');
-    weatherData.Properties.VariableNames = {'WindDir','WindSpeed','Humidity','Temperature',...
-        'Rain','Pressure','PowerLevel','LightIntensity'};
-    weatherData = retime(weatherData,"regular","mean","TimeStep",minutes(15));
-    [weatherData,~] = fillmissing(weatherData,"linear");
+    channelID = 12397;
 
+    latest = webread( ...
+        "https://api.thingspeak.com/channels/12397/feeds.json?results=1", ...
+        weboptions(ContentType="json",Timeout=20));
+
+    if isempty(latest.feeds)
+        error("BlinkToSOS:NoWeatherData", ...
+            "The weather channel has no available data.");
+    end
+
+    endTime = datetime(latest.feeds(end).created_at, ...
+        InputFormat="yyyy-MM-dd'T'HH:mm:ss'Z'",TimeZone="UTC");
+
+    [data,time] = thingSpeakRead(channelID, ...
+        DateRange=[endTime-days(1),endTime]);
+
+    if isempty(data) || isempty(time)
+        error("BlinkToSOS:NoWeatherData", ...
+            "No weather data were returned for the selected window.");
+    end
+
+    weatherData = timetable(time,data);
+    weatherData = splitvars(weatherData,"data");
+    weatherData.Properties.VariableNames = ...
+        {'WindDir','WindSpeed','Humidity','Temperature', ...
+         'Rain','Pressure','PowerLevel','LightIntensity'};
+    weatherData = retime(weatherData,"regular","mean", ...
+        TimeStep=minutes(15));
+    weatherData = fillmissing(weatherData,"linear");
 end
 %[text] 
 %[text] ![Function Icon](text:image:2509)**`visualizeNatickWeather`**
@@ -765,7 +786,7 @@ function visualizeNatickWeather()
     plot(weatherData.time,weatherData.Temperature,LineWidth=2)
     xlabel("Date")
     ylabel("Temperature ( $^\circ$F )",Interpreter="latex")
-    title("Past 24 hours weather in Natick, MA")
+    title("Weather in Natick, MA over the latest available 24 hours")
 end
 %[text] 
 %[text] ![Function Icon](text:image:05ab)**`encodeAnalogSignal`**
@@ -777,7 +798,7 @@ function encodeAnalogSignal(minSignal,maxSignal,numBin)
     plot(weatherData.time,weatherData.Temperature,LineWidth=2)
     xlabel("Date")
     ylabel("Temperature ( $^\circ$F )",Interpreter="latex")
-    title("Yesterday's weather in Natick, MA")
+    title("Weather in Natick, MA over the latest available 24 hours")
     
     digitalMap = linspace(minSignal,maxSignal,2^numBin);
     analogSignal = weatherData.Temperature;
@@ -799,7 +820,7 @@ function plotHumidity() %[text:anchor:H_9715A8FC]
     plot(weatherData.time,weatherData.Humidity,LineWidth=2)
     ylabel("Relative Humidity (%)")
     xlabel("Date")
-    title("Relative humidity in Natick, MA over the last 24 hours")
+    title("Relative humidity in Natick, MA over the latest available 24 hours")
 end
 %[text] 
 %[text] ![Function Icon](text:image:2fbf)**`filteringHumidity`**
@@ -812,7 +833,7 @@ function filteringHumidity(operator,level)
     yyaxis left
     ylabel("Relative Humidity (%)")
     xlabel("Date")
-    title("Yesterday's relative humidity in Natick, MA")
+    title("Relative humidity in Natick, MA over the latest available 24 hours")
     yyaxis right
     filteredHumidity = eval("weatherData.Humidity "+operator+level);
     stairs(weatherData.time,filteredHumidity,LineWidth=1)

@@ -67,9 +67,14 @@ classdef CoursewareSmokeTests < matlab.unittest.TestCase
 
         function runLearnerScriptSmokeTest(testCase, ScriptFile)
             import matlab.unittest.fixtures.CurrentFolderFixture
+            import matlab.unittest.fixtures.PathFixture
 
             fixture = CurrentFolderFixture(testCase.Project{1}.RootFolder);
             testCase.applyFixture(fixture);
+
+            % Prefer learner scripts over models with the same base name.
+            scriptPathFixture = PathFixture(fullfile(testCase.Project{1}.RootFolder, "Scripts"));
+            testCase.applyFixture(scriptPathFixture);
 
             fileToRun = string(ScriptFile);
             testCase.runScriptWithPrePostHooks(fileToRun);
