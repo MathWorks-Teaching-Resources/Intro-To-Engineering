@@ -56,3 +56,4 @@ ci_utilities/
 Scripts/ReactionAnalyzer.docx
 # AI Tooling
 .playwright-mcp/
+/graphify-out/
